@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zait Pay </title>
+  <title>Zait Pay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <section id="authScreen" class="auth-screen">
     <div class="auth-brand">
-      <div class="logo"><div class="logo-mark">V</div> Voltz Pay</div>
-      <div class="hero-copy">
-        <h1></h1>
-        <p>Seu banco digital. Rápido, seguro e sem complicações.<strong></strong> <strong></strong></p>
-        <div class="auth-badges">
-          <span class="badge">PIX</span><span class="badge">Boletos</span><span class="badge">Cartões</span><span class="badge">Split</span><span class="badge">API BAAS</span>
-        </div>
+      <div class="logo-hero-display">
+        <img src="image/z-logo-c-fundo.png" alt="Zait Bank Logo Oficial" class="img-logo-premium" />
       </div>
-      <span class="muted"></span>
     </div>
 
     <div class="auth-panel">
       <form class="auth-card" id="loginForm">
+        <div class="logo" style="margin-bottom:32px; justify-content:center;">
+          <div class="logo-sidebar-display">
+            <img src="image/ampolha.jpeg" alt="Zait Logo" class="img-logo-sidebar" />
+          </div>
+          <span>ZAIT<span class="light">PAY</span></span>
+        </div>
         <h2>Entrar na plataforma</h2>
-        <p>Insira suas credenciais de acesso.</p>
+        <p>Acesse seu ecossistema financeiro de alta performance.</p>
         
         <label>E-mail</label>
         <input id="email" type="email" value="admin@pay.com" required />
@@ -43,7 +46,12 @@
       </form>
 
       <form class="auth-card hidden" id="registerForm">
-        <div class="logo" style="margin-bottom:22px"><div class="logo-mark">Z</div> Cadastro</div>
+        <div class="logo" style="margin-bottom:32px; justify-content:center;">
+          <div class="logo-sidebar-display">
+            <img src="logo-zait-pay.jpeg" alt="Zait Logo" class="img-logo-sidebar" />
+          </div>
+          <span>ZAIT<span class="light">PAY</span></span>
+        </div>
         <h2>Criar nova conta</h2>
         <p>Cadastre-se para liberar suas contas Zait Pay e Voltz Pay imediatamente.</p>
         
@@ -65,10 +73,15 @@
 
   <section id="app" class="app hidden">
     <aside class="sidebar">
-      <div class="logo"><div class="logo-mark" id="brandMark">V</div><span id="brandName">Voltz Pay</span></div>
+      <div class="logo">
+        <div class="logo-sidebar-display">
+          <img src="image/ampolha.jpeg" alt="Zait Logo" class="img-logo-sidebar" />
+        </div>
+        <span id="brandName">ZAIT<span class="light">PAY</span></span>
+      </div>
 
       <div class="account-switcher" id="accountSwitcher">
-        <button class="switch-btn" id="btnSwitchZait" data-account="zait"><span>Zait Pay</span><small>Premium</small></button>
+        <button class="switch-btn" id="btnSwitchZait" data-account="zait"><span>Zait Bank</span><small>Premium</small></button>
         <button class="switch-btn active" id="btnSwitchVoltz" data-account="voltz"><span>Voltz Pay</span><small>Simples</small></button>
       </div>
 
