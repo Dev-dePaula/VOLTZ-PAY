@@ -235,7 +235,7 @@ function clientes() {
     </tr>`;
   }).join('');
 
-  return `<div class="card"><h3>Clientes Cadastrados</h3><table><thead><tr><th>Cliente</th><th>Status</th><th>Saldos</th><th>Trava Operacional</th></tr></thead><tbody>${rows || '<tr><td colspan="4">Nenhum cliente.</td></tr>'}</tbody></table></div>`;
+  return `<div class="card"><h3>Clientes Cadastrados</h3><div class="table-responsive"><table><thead><tr><th>Cliente</th><th>Status</th><th>Saldos</th><th>Trava Operacional</th></tr></thead><tbody>${rows || '<tr><td colspan="4">Nenhum cliente.</td></tr>'}</tbody></table></div></div>`;
 }
 
 function extratos() {
@@ -246,7 +246,7 @@ function extratos() {
   });
   all.sort((a,b) => b.id.localeCompare(a.id));
   let rows = all.map(t => `<tr><td><strong>${t.u}</strong></td><td><span class="pill">${t.b}</span></td><td>${t.method}</td><td><span class="pill ${t.type==='Entrada'?'ok':'warn'}">${t.type}</span></td><td>${t.description}</td><td><strong>${money(t.value)}</strong></td></tr>`).join('');
-  return `<div class="card"><h3>Extrato Consolidado Geral</h3><table><thead><tr><th>Cliente</th><th>Bandeira</th><th>Método</th><th>Fluxo</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${rows || '<tr><td colspan="6">Sem movimentações.</td></tr>'}</tbody></table></div>`;
+  return `<div class="card"><h3>Extrato Consolidado Geral</h3><div class="table-responsive"><table><thead><tr><th>Cliente</th><th>Bandeira</th><th>Método</th><th>Fluxo</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${rows || '<tr><td colspan="6">Sem movimentações.</td></tr>'}</tbody></table></div></div>`;
 }
 
 function dashboard() {
@@ -311,7 +311,7 @@ function client_boletos() {
   return `<div class="grid two"><form class="card" onsubmit="generateClientBoleto(event)"><h3>Registrar Boleto</h3>
     <label>Valor</label><input id="bolValue" type="number" step="0.01" required />
     <label>Pagador</label><input id="bolDesc" required /><button class="btn full">Gerar</button></form>
-    <div class="card"><h3>Emitidos</h3><table><thead><tr><th>ID</th><th>Descrição</th><th>Valor</th><th>Ação</th></tr></thead><tbody>${rows || '<tr><td colspan="4">Nenhum.</td></tr>'}</tbody></table></div></div>`;
+    <div class="card"><h3>Emitidos</h3><div class="table-responsive"><table><thead><tr><th>ID</th><th>Descrição</th><th>Valor</th><th>Ação</th></tr></thead><tbody>${rows || '<tr><td colspan="4">Nenhum.</td></tr>'}</tbody></table></div></div></div>`;
 }
 
 function generateClientBoleto(e) {
@@ -334,7 +334,7 @@ function client_links() {
     <label>Nome</label><input id="lnkDesc" required />
     <label>Parcelas</label><select id="lnkParc"><option value="1">À vista</option><option value="12">12x com juros</option></select>
     <button class="btn full">Gerar Link</button></form>
-    <div class="card"><h3>Ativos</h3><table><thead><tr><th>Nome</th><th>Valor</th><th>Parcelas</th></tr></thead><tbody>${rows || '<tr><td colspan="3">Nenhum.</td></tr>'}</tbody></table></div></div>`;
+    <div class="card"><h3>Ativos</h3><div class="table-responsive"><table><thead><tr><th>Nome</th><th>Valor</th><th>Parcelas</th></tr></thead><tbody>${rows || '<tr><td colspan="3">Nenhum.</td></tr>'}</tbody></table></div></div></div>`;
 }
 
 function createClientLink(e) {
@@ -349,7 +349,7 @@ function createClientLink(e) {
 
 function tableTransactions(rows) {
   if(!rows || !rows.length) return '<p class="muted">Sem lançamentos.</p>';
-  return `<table><thead><tr><th>ID</th><th>Método</th><th>Fluxo</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${rows.map(t=>`<tr><td><small>${t.id}</small></td><td>${t.method}</td><td><span class="pill ${t.type==='Entrada'?'ok':'warn'}">${t.type}</span></td><td>${t.description}</td><td>${money(t.value)}</td></tr>`).join('')}</tbody></table>`;
+  return `<div class="table-responsive"><table><thead><tr><th>ID</th><th>Método</th><th>Fluxo</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${rows.map(t=>`<tr><td><small>${t.id}</small></td><td>${t.method}</td><td><span class="pill ${t.type==='Entrada'?'ok':'warn'}">${t.type}</span></td><td>${t.description}</td><td>${money(t.value)}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
 if(currentUser) { document.getElementById('authScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); render(); }
