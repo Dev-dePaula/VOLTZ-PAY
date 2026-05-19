@@ -1,59 +1,78 @@
-// MENUS DO ADMINISTRADOR PARA A CONTA ZAIT (COMPLETO)
-const zaitAdminMenus = [
-  ['dashboard','📊 Dashboard Geral'], 
-  ['clientes', '👥 Clientes Cadastrados'], 
-  ['extratos', '📄 Extratos Globais'],
-  ['conta','🏦 Conta Nominal PJ/PF'], 
-  ['pix','⚡ PIX Admin'], 
-  ['cartao','💳 Cartão Crédito/Débito'], 
-  ['boletos','🧾 Boletos Admin'], 
-  ['links','🔗 Links de Pagamento Admin'], 
-  ['api','🧩 API BAAS'], 
-  ['webhooks','🔔 Webhooks'], 
-  ['bolsao','👛 Contas Bolsão'], 
-  ['split','✂️ Split de Pagamentos']
-];
+// ICONES VETORIAIS LINEARES DO BRAND BOARD DE ALTA FIDELIDADE
+const Icons = {
+  dashboard: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V10"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19H2"/><path d="M18 6l2-2 2 2"/></svg>`,
 
-// MENUS DO ADMINISTRADOR EXCLUSIVOS PARA A CONTA VOLTZ PAY (FILTRADOS)
-const voltzAdminMenus = [
-  ['dashboard','📊 Dashboard Geral'], 
-  ['clientes', '👥 Clientes Cadastrados'], 
-  ['bolsao','👛 Contas Bolsão - PJ/PF'],
-  ['pix','⚡ PIX'], 
-  ['extratos', '📄 EXTRATO'],
-  ['api','🧩 API PARA BAAS E ADQUIRENTES'], 
-  ['webhooks','🔔 WEBHOOK'], 
-  ['split','✂️ SPLIT DE PAGAMENTOS']
-];
+  clientes: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c.7-3.2 3-5 6-5s5.3 1.8 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 15.5c2.7.4 4.6 2 5.2 4.5"/></svg>`,
 
-// CONFIGURAÇÃO DOS MENUS DO CLIENTE
-const clientMenus = [
-  ['client_dashboard', '📊 Dashboard'], 
-  ['client_extrato', '📄 Meu Extrato'], 
-  ['client_pix', '⚡ Área PIX'], 
-  ['client_boletos', '🧾 Meus Boletos'], 
-  ['client_links', '🔗 Links de Pagamento']
-];
+  extratos: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/><path d="M9 13h text-6"/><path d="M9 17h6"/><path d="M9 9h2"/></svg>`,
 
-// BASE MOCK DO BANCO DE DADOS LOCAL
-const defaultData = {
-  users: [
-    { id: 'USR-ADMIN', name: 'Anderson Admin', email: 'admin@pay.com', password: '123456', role: 'admin', isLogged: false }
-  ],
-  ledgers: {
-    'USR-ADMIN': {
-      zait: { balance: 500000.00, transactions: [] },
-      voltz: { balance: 120000.00, transactions: [] }
-    }
-  }
+  conta: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M16 10h5"/><circle cx="17.5" cy="12.5" r="1"/><path d="M6 9h6"/></svg>`,
+
+  pix: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></svg>`,
+
+  cartao: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19"/><path d="M6 15h3"/><path d="M13 15h2"/></svg>`,
+
+  boletos: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 7v10"/><path d="M11 7v10"/><path d="M15 7v10"/><path d="M18 7v10"/></svg>`,
+
+  links: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.1.2l2.1-2.1a5 5 0 0 0-7.1-7.1L11 5"/><path d="M14 11a5 5 0 0 0-7.1-.2l-2.1 2.1a5 5 0 0 0 7.1 7.1L13 19"/></svg>`,
+
+  api: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-4 3 4 3"/><path d="M16 9l4 3-4 3"/><path d="M14 4l-4 16"/></svg>`,
+
+  webhooks: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M10 21h4"/><path d="M12 3v2"/></svg>`,
+
+  bolsao: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H4z"/><path d="M4 7V5a2 2 0 0 1 2-2h10"/><path d="M17 13h4"/><circle cx="17" cy="13" r="1"/></svg>`,
+
+  split: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M20 4L8 16"/><path d="M14 14l6 6"/><path d="M8 8l4 4"/></svg>`
 };
 
-let db = JSON.parse(localStorage.getItem('paySystemData2026_v3') || JSON.stringify(defaultData));
+// MENUS DO ADMIN - CONTAS ZAIT
+const zaitAdminMenus = [
+  ['dashboard','Dashboard Geral', Icons.dashboard], 
+  ['clientes', 'Clientes Cadastrados', Icons.clientes], 
+  ['extratos', 'Extratos Globais', Icons.extratos],
+  ['conta','Conta Nominal PJ/PF', Icons.conta], 
+  ['pix','PIX Admin', Icons.pix], 
+  ['cartao','Cartão Crédito/Débito', Icons.cartao], 
+  ['boletos','Boletos Admin', Icons.boletos], 
+  ['links','Links de Pagamento Admin', Icons.links], 
+  ['api','API BAAS', Icons.api], 
+  ['webhooks','Webhooks', Icons.webhooks], 
+  ['bolsao','Contas Bolsão', Icons.bolsao], 
+  ['split','Split de Pagamentos', Icons.split]
+];
+
+// MENUS DO ADMIN - CONTAS VOLTZ PAY
+const voltzAdminMenus = [
+  ['dashboard','Dashboard Geral', Icons.dashboard], 
+  ['clientes', 'Clientes Cadastrados', Icons.clientes], 
+  ['bolsao','Contas Bolsão - PJ/PF', Icons.bolsao],
+  ['pix','PIX', Icons.pix], 
+  ['extratos', 'EXTRATO', Icons.extratos],
+  ['api','API PARA BAAS E ADQUIRENTES', Icons.api], 
+  ['webhooks','WEBHOOK', Icons.webhooks], 
+  ['split','SPLIT DE PAGAMENTOS', Icons.split]
+];
+
+// MENUS DO CLIENTE
+const clientMenus = [
+  ['client_dashboard', 'Dashboard', Icons.dashboard], 
+  ['client_extrato', 'Meu Extrato', Icons.extratos], 
+  ['client_pix', 'Área PIX', Icons.pix], 
+  ['client_boletos', 'Meus Boletos', Icons.boletos], 
+  ['client_links', 'Links de Pagamento', Icons.links]
+];
+
+const defaultData = {
+  users: [{ id: 'USR-ADMIN', name: 'Anderson Admin', email: 'admin@pay.com', password: '123456', role: 'admin', isLogged: false }],
+  ledgers: { 'USR-ADMIN': { zait: { balance: 750000.00, transactions: [] }, voltz: { balance: 230000.00, transactions: [] } } }
+};
+
+let db = JSON.parse(localStorage.getItem('paySystemData_ZaitV6_Final') || JSON.stringify(defaultData));
 let currentUser = JSON.parse(localStorage.getItem('activeUser')) || null;
 let account = localStorage.getItem('activeAccount') || 'voltz';
 let page = currentUser && currentUser.role === 'client' ? 'client_dashboard' : 'dashboard';
 
-function save() { localStorage.setItem('paySystemData2026_v3', JSON.stringify(db)); }
+function save() { localStorage.setItem('paySystemData_ZaitV6_Final', JSON.stringify(db)); }
 function money(v) { return Number(v || 0).toLocaleString('pt-BR', { style:'currency', currency:'BRL' }); }
 function uid(prefix='ID') { return prefix + '-' + Math.random().toString(36).slice(2,8).toUpperCase(); }
 
@@ -73,95 +92,68 @@ function toggleAuthMode(e, mode) {
   }
 }
 
-// LOGIN
 document.getElementById('loginForm').addEventListener('submit', e => {
   e.preventDefault();
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
-  
   const user = db.users.find(u => u.email === email && u.password === password);
   
   if(user) {
-    user.isLogged = true;
-    save();
-    currentUser = user;
-    localStorage.setItem('activeUser', JSON.stringify(user));
-    
+    user.isLogged = true; save();
+    currentUser = user; localStorage.setItem('activeUser', JSON.stringify(user));
     document.getElementById('authScreen').classList.add('hidden');
     document.getElementById('app').classList.remove('hidden');
-    
     page = user.role === 'admin' ? 'dashboard' : 'client_dashboard';
-    
-    enforceOperationMode();
-    render();
-  } else {
-    alert('Credenciais inválidas!');
-  }
+    enforceOperationMode(); render();
+  } else { alert('Credenciais inválidas!'); }
 });
 
-// CADASTRO DE CLIENTE
 document.getElementById('registerForm').addEventListener('submit', e => {
   e.preventDefault();
   const name = document.getElementById('regName').value.trim();
   const email = document.getElementById('regEmail').value.trim();
   const password = document.getElementById('regPassword').value.trim();
   
-  if(db.users.find(u => u.email === email)) {
-    alert('E-mail já cadastrado!');
-    return;
-  }
+  if(db.users.find(u => u.email === email)) { alert('E-mail já cadastrado!'); return; }
   
   const newUserId = uid('USR');
   const newClient = { id: newUserId, name, email, password, role: 'client', isLogged: true, allowedMode: 'all' };
   
   db.users.push(newClient);
   db.ledgers[newUserId] = {
-    zait: { balance: 1000.00, transactions: [{ id: uid('PIX'), method:'PIX', type:'Entrada', value:1000, description:'Abertura de Conta Zait', date:new Date().toLocaleString('pt-BR') }], boletos:[], links:[] },
-    voltz: { balance: 1000.00, transactions: [{ id: uid('PIX'), method:'PIX', type:'Entrada', value:1000, description:'Abertura de Conta Voltz', date:new Date().toLocaleString('pt-BR') }], boletos:[], links:[] }
+    zait: { balance: 1500.00, transactions: [{ id: uid('PIX'), method:'PIX', type:'Entrada', value:1500, description:'Liquidação Abertura Zait', date:new Date().toLocaleString('pt-BR') }], boletos:[], links:[] },
+    voltz: { balance: 1500.00, transactions: [{ id: uid('PIX'), method:'PIX', type:'Entrada', value:1500, description:'Liquidação Abertura Voltz', date:new Date().toLocaleString('pt-BR') }], boletos:[], links:[] }
   };
   
   save();
-  currentUser = newClient;
-  localStorage.setItem('activeUser', JSON.stringify(newClient));
-  
+  currentUser = newClient; localStorage.setItem('activeUser', JSON.stringify(newClient));
   document.getElementById('authScreen').classList.add('hidden');
   document.getElementById('app').classList.remove('hidden');
-  
   page = 'client_dashboard';
-  enforceOperationMode();
-  render();
-  showToast('Conta criada! Zait Pay e Voltz Pay liberadas.');
+  enforceOperationMode(); render();
+  showToast('Conta criada com Engenharia Financeira ativa!');
 });
 
 function logout() {
   if(currentUser) {
     const user = db.users.find(u => u.id === currentUser.id);
-    if(user) user.isLogged = false;
-    save();
+    if(user) user.isLogged = false; save();
   }
-  localStorage.removeItem('activeUser');
-  location.reload();
+  localStorage.removeItem('activeUser'); location.reload();
 }
 
-// CHAVEADOR DE CONTAS COM REGRAS DE BLOQUEIO INDIVIDUAL
 document.querySelectorAll('.switch-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const targetAccount = btn.dataset.account;
-    
     if(currentUser.role === 'client') {
       const freshUser = db.users.find(u => u.id === currentUser.id);
       if(freshUser && freshUser.allowedMode !== 'all' && freshUser.allowedMode !== targetAccount) {
-        showToast('Esta conta está bloqueada para você pelo administrador.');
-        return;
+        showToast('Esta conta está bloqueada para você pelo administrador.'); return;
       }
     }
-    
     account = targetAccount;
     localStorage.setItem('activeAccount', account);
-    
-    // Se o admin mudar de conta, reseta para a página inicial para evitar telas fantasmas
     if(currentUser.role === 'admin') page = 'dashboard';
-    
     render();
   });
 });
@@ -172,257 +164,133 @@ function enforceOperationMode() {
   const btnVoltz = document.getElementById('btnSwitchVoltz');
   if (!btnZait || !btnVoltz) return;
 
-  btnZait.removeAttribute('disabled');
-  btnVoltz.removeAttribute('disabled');
+  btnZait.removeAttribute('disabled'); btnVoltz.removeAttribute('disabled');
 
   if (currentUser.role === 'client') {
     const freshUser = db.users.find(u => u.id === currentUser.id);
     const mode = freshUser ? freshUser.allowedMode : 'all';
-
-    if (mode === 'zait') {
-      btnVoltz.setAttribute('disabled', 'true');
-      account = 'zait';
-    } else if (mode === 'voltz') {
-      btnZait.setAttribute('disabled', 'true');
-      account = 'voltz';
-    }
+    if (mode === 'zait') { btnVoltz.setAttribute('disabled', 'true'); account = 'zait'; }
+    else if (mode === 'voltz') { btnZait.setAttribute('disabled', 'true'); account = 'voltz'; }
     localStorage.setItem('activeAccount', account);
   }
 }
 
 function applyTheme() {
-  const root = document.documentElement;
   const isZait = account === 'zait';
-  root.style.setProperty('--active-primary', isZait ? 'var(--zait-primary)' : 'var(--voltz-primary)');
-  root.style.setProperty('--active-secondary', isZait ? 'var(--zait-secondary)' : 'var(--voltz-secondary)');
-  document.getElementById('brandName').textContent = isZait ? 'Zait Pay' : 'Voltz Pay';
-  document.getElementById('brandMark').textContent = isZait ? 'Z' : 'V';
+  document.getElementById('brandName').innerHTML = isZait ? 'ZAIT<span class="light">PAY</span>' : 'VOLTZ<span class="light">PAY</span>';
   document.querySelectorAll('.switch-btn').forEach(b => b.classList.toggle('active', b.dataset.account === account));
 }
 
-// RENDERIZAÇÃO CONDICIONAL DE MENUS BASEADO NA CONTA ATIVA NO ADMIN
 function renderNav() {
   const nav = document.getElementById('nav');
-  let menus = [];
+  let menus = currentUser.role === 'admin' ? (account === 'voltz' ? voltzAdminMenus : zaitAdminMenus) : clientMenus;
 
-  if (currentUser.role === 'admin') {
-    menus = account === 'voltz' ? voltzAdminMenus : zaitAdminMenus;
-  } else {
-    menus = clientMenus;
-  }
-
-  nav.innerHTML = menus.map(([key,label]) => `<button class="${page===key?'active':''}" onclick="openPage('${key}')">${label}</button>`).join('');
+  nav.innerHTML = menus.map(([key, label, svgIcon]) => {
+    const activeClass = page === key ? 'class="active"' : '';
+    return `<button ${activeClass} onclick="openPage('${key}')">${svgIcon} <span>${label}</span></button>`;
+  }).join('');
 }
 
 function openPage(key) { page = key; render(); }
-
-function userLedger(userId = currentUser.id) {
-  return db.ledgers[userId] ? db.ledgers[userId][account] : { balance: 0, transactions: [], boletos:[], links:[] };
-}
+function userLedger(userId = currentUser.id) { return db.ledgers[userId] ? db.ledgers[userId][account] : { balance: 0, transactions: [], boletos:[], links:[] }; }
 
 function render() {
   if(!currentUser) return;
-  enforceOperationMode();
-  applyTheme();
-  renderNav();
+  enforceOperationMode(); applyTheme(); renderNav();
   
   document.getElementById('userName').textContent = currentUser.name;
   document.getElementById('userRole').textContent = currentUser.role === 'admin' ? 'Acesso Master' : 'Cliente';
   document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
   
-  if(currentUser.role === 'admin') {
-    document.getElementById('btnAdminPanel').classList.remove('hidden');
-  }
+  if(currentUser.role === 'admin') document.getElementById('btnAdminPanel').classList.remove('hidden');
 
-  const map = { 
-    dashboard, clientes, extratos, conta, pix, cartao, boletos, links, api, webhooks, bolsao, split,
-    client_dashboard, client_extrato, client_pix, client_boletos, client_links 
-  };
-  
+  const map = { dashboard, clientes, extratos, conta, pix, cartao, boletos, links, api, webhooks, bolsao, split, client_dashboard, client_extrato, client_pix, client_boletos, client_links };
   document.getElementById('content').innerHTML = (map[page] || dashboard)();
 }
 
-// ======================== MÓDULO ADMINISTRATIVO ========================
+// ======================== ADMIN MODULES ========================
 
 function setClientOperatingMode(userId, mode) {
   const user = db.users.find(u => u.id === userId);
-  if (user) {
-    user.allowedMode = mode;
-    save();
-    showToast(`Modo operacional atualizado para ${user.name}`);
-    render();
-  }
+  if (user) { user.allowedMode = mode; save(); showToast(`Configuração operacional de ${user.name} salva.`); render(); }
 }
 
-// TELA: CLIENTES CADASTRADOS (ADMIN)
 function clientes() {
   const clients = db.users.filter(u => u.role === 'client');
-  
   let rows = clients.map(u => {
     const ledgZ = db.ledgers[u.id]?.zait || { balance: 0 };
     const ledgV = db.ledgers[u.id]?.voltz || { balance: 0 };
     const status = u.isLogged ? '<span class="pill ok">Online</span>' : '<span class="muted">Offline</span>';
-    const currentMode = u.allowedMode || 'all';
-
     return `<tr>
       <td><strong>${u.name}</strong><br><small class="muted">${u.email}</small></td>
       <td>${status}</td>
       <td><span style="color:var(--zait-primary)">Zait:</span> ${money(ledgZ.balance)}<br><span style="color:var(--voltz-primary)">Voltz:</span> ${money(ledgV.balance)}</td>
       <td>
         <select class="table-select" onchange="setClientOperatingMode('${u.id}', this.value)">
-          <option value="all" ${currentMode === 'all' ? 'selected' : ''}>Liberar as 2 Contas</option>
-          <option value="zait" ${currentMode === 'zait' ? 'selected' : ''}>Apenas Zait Pay (Bloqueia Voltz)</option>
-          <option value="voltz" ${currentMode === 'voltz' ? 'selected' : ''}>Apenas Voltz Pay (Bloqueia Zait)</option>
+          <option value="all" ${u.allowedMode === 'all'?'selected':''}>Liberar as 2 Contas</option>
+          <option value="zait" ${u.allowedMode === 'zait'?'selected':''}>Apenas Zait Bank</option>
+          <option value="voltz" ${u.allowedMode === 'voltz'?'selected':''}>Apenas Voltz Pay</option>
         </select>
       </td>
     </tr>`;
   }).join('');
 
-  if(!clients.length) rows = `<tr><td colspan="4" class="muted">Nenhum cliente registrado no sistema.</td></tr>`;
-
-  return `
-    <div class="card">
-      <h3>Gerenciamento de Clientes Cadastrados</h3>
-      <p class="muted">Monitore quem está online, audite saldos e configure permissões de bloqueio individuais por cliente.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Cliente / E-mail</th>
-            <th>Status de Login</th>
-            <th>Saldos em Conta</th>
-            <th>Configuração de Operação (Trava)</th>
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-  `;
+  return `<div class="card"><h3>Clientes Cadastrados</h3><table><thead><tr><th>Cliente</th><th>Status</th><th>Saldos</th><th>Trava Operacional</th></tr></thead><tbody>${rows || '<tr><td colspan="4">Nenhum cliente.</td></tr>'}</tbody></table></div>`;
 }
 
-// TELA: EXTRATOS GLOBAIS (ADMIN - CONSOLIDA MOVIMENTAÇÕES)
 function extratos() {
-  let allTransactions = [];
-
+  let all = [];
   db.users.forEach(u => {
-    const userLedger = db.ledgers[u.id];
-    if (userLedger) {
-      if (userLedger.zait && userLedger.zait.transactions) {
-        userLedger.zait.transactions.forEach(t => {
-          allTransactions.push({ ...t, clientName: u.name, accountBandeira: 'Zait Pay Premium' });
-        });
-      }
-      if (userLedger.voltz && userLedger.voltz.transactions) {
-        userLedger.voltz.transactions.forEach(t => {
-          allTransactions.push({ ...t, clientName: u.name, accountBandeira: 'Voltz Pay Simples' });
-        });
-      }
-    }
+    if(db.ledgers[u.id]?.zait?.transactions) db.ledgers[u.id].zait.transactions.forEach(t => all.push({...t, u: u.name, b: 'Zait Premium'}));
+    if(db.ledgers[u.id]?.voltz?.transactions) db.ledgers[u.id].voltz.transactions.forEach(t => all.push({...t, u: u.name, b: 'Voltz Simples'}));
   });
-
-  allTransactions.sort((a, b) => b.id.localeCompare(a.id));
-
-  let rows = allTransactions.map(t => `
-    <tr>
-      <td><strong>${t.clientName}</strong></td>
-      <td><span class="pill">${t.accountBandeira}</span></td>
-      <td><small>${t.id}</small></td>
-      <td>${t.method}</td>
-      <td><span class="pill ${t.type==='Entrada'?'ok':'warn'}">${t.type}</span></td>
-      <td>${t.description}</td>
-      <td><strong>${money(t.value)}</strong></td>
-    </tr>
-  `).join('');
-
-  if(!allTransactions.length) rows = `<tr><td colspan="7" class="muted">Nenhuma movimentação realizada por clientes até o momento.</td></tr>`;
-
-  return `
-    <div class="card">
-      <h3>Histórico Consolidado de Extratos (Global)</h3>
-      <p class="muted">Auditoria em tempo real de todas as entradas, saídas e movimentações financeiras de clientes.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Cliente</th>
-            <th>Bandeira</th>
-            <th>ID Transação</th>
-            <th>Método</th>
-            <th>Fluxo</th>
-            <th>Descrição do Evento</th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-  `;
+  all.sort((a,b) => b.id.localeCompare(a.id));
+  let rows = all.map(t => `<tr><td><strong>${t.u}</strong></td><td><span class="pill">${t.b}</span></td><td>${t.method}</td><td><span class="pill ${t.type==='Entrada'?'ok':'warn'}">${t.type}</span></td><td>${t.description}</td><td><strong>${money(t.value)}</strong></td></tr>`).join('');
+  return `<div class="card"><h3>Extrato Consolidado Geral</h3><table><thead><tr><th>Cliente</th><th>Bandeira</th><th>Método</th><th>Fluxo</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${rows || '<tr><td colspan="6">Sem movimentações.</td></tr>'}</tbody></table></div>`;
 }
 
 function dashboard() {
   const d = userLedger('USR-ADMIN');
-  return `
-    <div class="grid cards">
-      <div class="card"><span class="pill ok">Saldo Central Admin</span><div class="metric">${money(d.balance)}</div><span class="muted">Segurança Operacional (${account.toUpperCase()})</span></div>
-      <div class="card"><span class="pill">Total de Usuários</span><div class="metric">${db.users.length}</div><span class="muted">Cadastrados</span></div>
-    </div>
-    <br><div class="card"><h3>Painel Central Administrativo</h3><p class="muted">Selecione uma das opções no menu lateral para gerenciar e auditar os parâmetros do ecossistema BaaS.</p></div>`;
+  return `<div class="grid cards">
+    <div class="card"><span class="pill ok">Balanço Central</span><div class="metric">${money(d.balance)}</div><span class="muted">Segurança Operacional</span></div>
+    <div class="card"><span class="pill">Ecossistema</span><div class="metric">${db.users.length}</div><span class="muted">Contas registradas</span></div>
+  </div><br><div class="card"><h3>Engenharia Financeira Integrada</h3><p class="muted">Selecione uma partição no menu lateral para auditoria técnica.</p></div>`;
 }
 
-// MENUS MODULARES ADICIONAIS
-function conta() { return `<div class="card"><h3>Contas PJ/PF Administradas</h3><p class="muted">Gerenciamento de contas nominais Zait Pay.</p></div>`; }
-function pix() { return `<div class="card"><h3>Módulo Avançado de Infraestrutura PIX</h3><p class="muted">Ajustes operacionais de chaves DICT e limites.</p></div>`; }
-function cartao() { return `<div class="card"><h3>Adquirência Geral de Cartões</h3><p class="muted">Configurações de taxas da adquirente.</p></div>`; }
-function boletos() { return `<div class="card"><h3>Monitoramento de Lotes de Boletos</h3><p class="muted">Registros de lotes CIP.</p></div>`; }
-function links() { return `<div class="card"><h3>Rastreamento de Links Gerados</h3><p class="muted">Auditoria de links ativos no gateway.</p></div>`; }
-function api() { return `<div class="card"><h3>Configuração do Endpoint Gateway BAAS e Adquirentes</h3><p class="muted">Camada técnica para conexões de parceiros via API rest.</p></div>`; }
-function webhooks() { return `<div class="card"><h3>Disparadores de Webhooks de Eventos</h3><p class="muted">Gerenciamento de callbacks de notificações.</p></div>`; }
-function bolsao() { return `<div class="card"><h3>Contas Bolsão Pool (PJ/PF)</h3><p class="muted">Controle de carteiras agregadoras e liquidação financeira simplificada.</p></div>`; }
-function split() { return `<div class="card"><h3>Split Automatizado de Pagamentos</h3><p class="muted">Configurações e auditoria de divisões automáticas de recebíveis.</p></div>`; }
+function conta() { return `<div class="card"><h3>Contas PJ/PF Administradas</h3></div>`; }
+function pix() { return `<div class="card"><h3>Infraestrutura de Chaves PIX</h3></div>`; }
+function cartao() { return `<div class="card"><h3>Configurações de Adquirência</h3></div>`; }
+function boletos() { return `<div class="card"><h3>Monitoramento de Lotes Homologados</h3></div>`; }
+function links() { return `<div class="card"><h3>Rastreamento de Links de Checkout</h3></div>`; }
+function api() { return `<div class="card"><h3>Endpoints Rest Gateway API</h3></div>`; }
+function webhooks() { return `<div class="card"><h3>Callbacks de Notificação Ativos</h3></div>`; }
+function bolsao() { return `<div class="card"><h3>Contas Bolsão Aggregator</h3></div>`; }
+function split() { return `<div class="card"><h3>Regras de Split</h3></div>`; }
 
-// ======================== MÓDULO EXCLUSIVO DO CLIENTE ========================
+// ======================== CLIENT OPERATIONS ========================
 
 function client_dashboard() {
   const cl = userLedger();
-  const inputs = cl.transactions.filter(t => t.type === 'Entrada').reduce((s, t) => s + t.value, 0);
-  const outputs = cl.transactions.filter(t => t.type === 'Saída').reduce((s, t) => s + t.value, 0);
-  
-  return `
-    <div class="grid cards">
-      <div class="card"><span class="pill ok">Seu Saldo Disponível</span><div class="metric" style="color:var(--active-primary)">${money(cl.balance)}</div><span class="muted">Disponível para movimentar</span></div>
-      <div class="card"><span class="pill ok">Entradas</span><div class="metric">${money(inputs)}</div><span class="muted">Faturado</span></div>
-      <div class="card"><span class="pill warn">Saídas</span><div class="metric">${money(outputs)}</div><span class="muted">Pago</span></div>
+  return `<div class="grid cards">
+    <div class="card"><span class="pill ok">Saldo Livre Disponível</span><div class="metric" style="color:var(--zait-primary)">${money(cl.balance)}</div><span class="muted">Garantia Zait S/A</span></div>
+  </div><br><div class="grid two">
+    <div class="card"><h3>Ações Rápidas</h3>
+      <button class="btn full" onclick="openPage('client_pix')">⚡ Enviar Transação PIX</button><br>
+      <button class="btn ghost full" onclick="openPage('client_boletos')">🧾 Emitir Boleto CIP</button><br>
+      <button class="btn ghost full" onclick="openPage('client_links')">🔗 Checkout Link Cartão</button>
     </div>
-    <br>
-    <div class="grid two">
-      <div class="card">
-        <h3>Ações Rápidas</h3>
-        <button class="btn full" onclick="openPage('client_pix')">⚡ Transferência PIX</button><br>
-        <button class="btn ghost full" onclick="openPage('client_boletos')">🧾 Emitir Boleto Bancário</button><br>
-        <button class="btn ghost full" onclick="openPage('client_links')">🔗 Novo Link de Cobrança</button>
-      </div>
-      <div class="card"><h3>Últimos Lançamentos</h3>${tableTransactions(cl.transactions.slice(-3))}</div>
-    </div>
-  `;
+    <div class="card"><h3>Últimas Movimentações</h3>${tableTransactions(cl.transactions.slice(-3))}</div>
+  </div>`;
 }
 
-function client_extrato() {
-  return `<div class="card"><h3>Histórico Detalhado da Conta</h3>${tableTransactions(userLedger().transactions)}</div>`;
-}
+function client_extrato() { return `<div class="card"><h3>Demonstrativo de Conta</h3>${tableTransactions(userLedger().transactions)}</div>`; }
 
 function client_pix() {
-  return `
-    <div class="card" style="max-width: 500px;">
-      <h3>Área PIX</h3>
-      <form onsubmit="processClientPix(event)">
-        <label>Operação</label>
-        <select id="pixType"><option value="Saída">Pagar/Transferir para Alguém</option><option value="Entrada">Receber/Simular Depósito</option></select>
-        <label>Valor (R$)</label>
-        <input id="pixValue" type="number" step="0.01" required />
-        <label>Chave do Destinatário</label>
-        <input id="pixDesc" placeholder="CPF, CNPJ ou E-mail" required />
-        <button class="btn full">Confirmar PIX</button>
-      </form>
-    </div>
-  `;
+  return `<div class="card" style="max-width:500px;"><h3>Área PIX</h3><form onsubmit="processClientPix(event)">
+    <label>Fluxo</label><select id="pixType"><option value="Saída">Enviar PIX</option><option value="Entrada">Receber PIX</option></select>
+    <label>Valor (R$)</label><input id="pixValue" type="number" step="0.01" required />
+    <label>Chave Destino</label><input id="pixDesc" required />
+    <button class="btn full">Executar</button></form></div>`;
 }
 
 function processClientPix(e) {
@@ -432,38 +300,18 @@ function processClientPix(e) {
   const desc = document.getElementById('pixDesc').value;
   const ledger = db.ledgers[currentUser.id][account];
 
-  if(type === 'Saída' && ledger.balance < val) {
-    alert('Saldo insuficiente para enviar este PIX.');
-    return;
-  }
-
+  if(type === 'Saída' && ledger.balance < val) { alert('Saldo Insuficiente.'); return; }
   ledger.transactions.push({ id: uid('PIX'), method: 'PIX', type, value: val, description: `PIX: ${desc}`, date: new Date().toLocaleString('pt-BR') });
-  ledger.balance += type === 'Entrada' ? val : -val;
-  save();
-  showToast('PIX efetuado com sucesso!');
-  openPage('client_dashboard');
+  ledger.balance += type === 'Entrada' ? val : -val; save(); showToast('PIX concluído.'); openPage('client_dashboard');
 }
 
 function client_boletos() {
   const bList = userLedger().boletos || [];
-  const rows = bList.map(b => `<tr><td>${b.id}</td><td>${b.desc}</td><td>${money(b.value)}</td><td><button class="btn ghost" style="padding:4px 8px; font-size:11px;" onclick="alert('PDF baixado com sucesso.')">Baixar PDF</button></td></tr>`).join('');
-  
-  return `
-    <div class="grid two">
-      <form class="card" onsubmit="generateClientBoleto(event)">
-        <h3>Emissão de Boleto</h3>
-        <label>Valor (R$)</label>
-        <input id="bolValue" type="number" step="0.01" required />
-        <label>Sacado / Descrição</label>
-        <input id="bolDesc" required />
-        <button class="btn full">Gerar Cobrança</button>
-      </form>
-      <div class="card">
-        <h3>Seus Boletos</h3>
-        <table><thead><tr><th>ID</th><th>Descrição</th><th>Valor</th><th>PDF</th></tr></thead><tbody>${rows || '<tr><td colspan="4" class="muted">Nenhum emitido.</td></tr>'}</tbody></table>
-      </div>
-    </div>
-  `;
+  const rows = bList.map(b => `<tr><td>${b.id}</td><td>${b.desc}</td><td>${money(b.value)}</td><td><button class="btn ghost" style="padding:4px 8px; font-size:11px;" onclick="alert('PDF baixado.')">PDF</button></td></tr>`).join('');
+  return `<div class="grid two"><form class="card" onsubmit="generateClientBoleto(event)"><h3>Registrar Boleto</h3>
+    <label>Valor</label><input id="bolValue" type="number" step="0.01" required />
+    <label>Pagador</label><input id="bolDesc" required /><button class="btn full">Gerar</button></form>
+    <div class="card"><h3>Emitidos</h3><table><thead><tr><th>ID</th><th>Descrição</th><th>Valor</th><th>Ação</th></tr></thead><tbody>${rows || '<tr><td colspan="4">Nenhum.</td></tr>'}</tbody></table></div></div>`;
 }
 
 function generateClientBoleto(e) {
@@ -471,41 +319,22 @@ function generateClientBoleto(e) {
   const val = Number(document.getElementById('bolValue').value);
   const desc = document.getElementById('bolDesc').value;
   const userSpace = db.ledgers[currentUser.id][account];
-
   if(!userSpace.boletos) userSpace.boletos = [];
   const bId = uid('BOL');
-  
   userSpace.boletos.push({ id: bId, value: val, desc });
-  userSpace.transactions.push({ id: bId, method: 'BOLETO', type: 'Entrada', value: val, description: `Boleto Registrado: ${desc}`, date: new Date().toLocaleString('pt-BR') });
-  userSpace.balance += val;
-  
-  save();
-  showToast('Boleto emitido e creditado.');
-  openPage('client_dashboard');
+  userSpace.transactions.push({ id: bId, method: 'BOLETO', type: 'Entrada', value: val, description: `Boleto: ${desc}`, date: new Date().toLocaleString('pt-BR') });
+  userSpace.balance += val; save(); showToast('Boleto Gerado.'); openPage('client_dashboard');
 }
 
 function client_links() {
   const lList = userLedger().links || [];
   const rows = lList.map(l => `<tr><td>${l.desc}</td><td>${money(l.value)}</td><td>Até ${l.parc}x</td></tr>`).join('');
-
-  return `
-    <div class="grid two">
-      <form class="card" onsubmit="createClientLink(event)">
-        <h3>Novo Link de Pagamento</h3>
-        <label>Valor (R$)</label>
-        <input id="lnkValue" type="number" step="0.01" required />
-        <label>Nome do Link</label>
-        <input id="lnkDesc" required />
-        <label>Parcelamento</label>
-        <select id="lnkParc"><option value="1">À vista</option><option value="12">Até 12x no Cartão</option></select>
-        <button class="btn full">Gerar Link</button>
-      </form>
-      <div class="card">
-        <h3>Links Criados</h3>
-        <table><thead><tr><th>Nome</th><th>Valor</th><th>Parcelas</th></tr></thead><tbody>${rows || '<tr><td colspan="3" class="muted">Nenhum criado.</td></tr>'}</tbody></table>
-      </div>
-    </div>
-  `;
+  return `<div class="grid two"><form class="card" onsubmit="createClientLink(event)"><h3>Novo Link</h3>
+    <label>Valor</label><input id="lnkValue" type="number" step="0.01" required />
+    <label>Nome</label><input id="lnkDesc" required />
+    <label>Parcelas</label><select id="lnkParc"><option value="1">À vista</option><option value="12">12x com juros</option></select>
+    <button class="btn full">Gerar Link</button></form>
+    <div class="card"><h3>Ativos</h3><table><thead><tr><th>Nome</th><th>Valor</th><th>Parcelas</th></tr></thead><tbody>${rows || '<tr><td colspan="3">Nenhum.</td></tr>'}</tbody></table></div></div>`;
 }
 
 function createClientLink(e) {
@@ -514,22 +343,13 @@ function createClientLink(e) {
   const desc = document.getElementById('lnkDesc').value;
   const parc = document.getElementById('lnkParc').value;
   const userSpace = db.ledgers[currentUser.id][account];
-
   if(!userSpace.links) userSpace.links = [];
-  userSpace.links.push({ value: val, desc, parc });
-  save();
-  showToast('Link de pagamento criado!');
-  render();
+  userSpace.links.push({ value: val, desc, parc }); save(); showToast('Link pronto.'); render();
 }
 
 function tableTransactions(rows) {
-  if(!rows || !rows.length) return '<p class="muted">Nenhum lançamento.</p>';
+  if(!rows || !rows.length) return '<p class="muted">Sem lançamentos.</p>';
   return `<table><thead><tr><th>ID</th><th>Método</th><th>Fluxo</th><th>Descrição</th><th>Valor</th></tr></thead><tbody>${rows.map(t=>`<tr><td><small>${t.id}</small></td><td>${t.method}</td><td><span class="pill ${t.type==='Entrada'?'ok':'warn'}">${t.type}</span></td><td>${t.description}</td><td>${money(t.value)}</td></tr>`).join('')}</tbody></table>`;
 }
 
-// INICIALIZADOR AUTOMÁTICO
-if(currentUser) {
-  document.getElementById('authScreen').classList.add('hidden');
-  document.getElementById('app').classList.remove('hidden');
-  render();
-}
+if(currentUser) { document.getElementById('authScreen').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); render(); }
